@@ -192,7 +192,7 @@ export default function Home() {
               <div>
                 <div className="grid grid-cols-3 grid-rows-2 gap-4">
                   <div className="col-span-1 row-span-2">
-                    ///以下の関数を真似て他のTx種類に関しても実装する
+                    {/*以下の関数を真似て他のTx種類に関しても実装する*/}
                     <button
                       className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
                       onClick={() =>
@@ -246,7 +246,7 @@ export default function Home() {
                   <div className="overflow-scroll col-start-2 col-span-2 row-span-2 border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
                     <div className="w-[1000px]">
                       <div className="block whitespace-pre-wrap justify-center ">
-                      ///ここでlogを出力している
+                       {/*ここでlog出力*/}
                       <pre>{events.join(`\n`)}</pre>
                       </div>
                     </div>
