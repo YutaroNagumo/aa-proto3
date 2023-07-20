@@ -18,14 +18,18 @@ export default function Home() {
   const sendTransaction_normal = async ()=> {
     setEvents([]);
     addEvent("Sending transaction...");
-    const response_l = await sendOperationAndGetHash_n();
-    addEvent(`hash: ${response_l[1]}`);
+    const res = await sendOperationAndGetHash_n();
+    addEvent(`hash: ${res[1]}`);
+    addEvent(`explorer: https://mumbai.polygonscan.com/tx/${res[1]}`);
+
+
+    
     //csvに保存
     const data = {
       tool: selected_tool ?? '',
-      RunTime : response_l[0],
+      RunTime : res[0],
       UserOperationHash: "",
-      transactionHash: response_l[1],
+      transactionHash: res[1],
       GasFee : "",
     };
 
@@ -46,6 +50,7 @@ export default function Home() {
     addEvent("Sending transaction...");
     const res = await sendOperationAndGetHash_s();
     addEvent(`Transaction hash: ${res[2]}`);
+    addEvent(`explorer: https://mumbai.polygonscan.com/tx/${res[2]}`);
     
     //csvに保存
     const data = {
@@ -70,15 +75,17 @@ export default function Home() {
   ///alchemy///
   const sendTransaction_alchemy = async ()=> {
     setEvents([]);
-    const response = await sendOperationAndGetHash_a();
-    if (response !== null) {
-    addEvent(`hash: ${response[1]}`);
+    addEvent("Sending transaction...");
+    const res = await sendOperationAndGetHash_a();
+    if (res !== null) {
+    addEvent(`hash: ${res[1]}`);
+    addEvent(`JiffyScan: https://www.jiffyscan.xyz/userOpHash/${res[1]}?network=mumbai`);
 
     //csvに保存
     const data = {
       tool: selected_tool ?? '',
-      RunTime : response[0],
-      UserOperationHash: response[1],
+      RunTime : res[0],
+      UserOperationHash: res[1],
       transactionHash: "",
       GasFee : "",
     };
@@ -106,16 +113,17 @@ export default function Home() {
   const sendTransaction_zerodev = async () => {
     setEvents([]);
     addEvent("Sending transaction...");
-    const result = await sendOperationAndGetHash_z();
-    addEvent(`UserOpHash: ${result[1]}`);
+    const res = await sendOperationAndGetHash_z();
+    addEvent(`UserOpHash: ${res[1]}`);
+    addEvent(`JiffyScan: https://www.jiffyscan.xyz/userOpHash/${res[1]}?network=mumbai`);
     // addEvent(`Transaction hash: ${result[5]?? null}`);
-    console.log(result);
+    console.log(res);
 
     //csvに保存
     const data = {
       tool: selected_tool ?? '',
-      RunTime : result[0],
-      UserOperationHash: result[1],
+      RunTime : res[0],
+      UserOperationHash: res[1],
       transactionHash: "",
       GasFee : "",
     };
