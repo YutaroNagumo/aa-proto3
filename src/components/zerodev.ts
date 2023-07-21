@@ -26,8 +26,13 @@ const sendOperationAndGetHash_z = async () => {
   const nftContract = new Contract(contractAddress, contractABI, signer)
 
   const receipt = await nftContract.mint(address)
-  await receipt.wait()
-  console.log(`NFT balance: ${await nftContract.balanceOf(address)}`)
+  // const receipt = await signer.encodeExecute([{
+  //   to: "0xE15967C015C68c7E26F606411f9174376002aDcC",
+  //   data: "0x",
+  //   value: 0.000002,
+  // }]);
+  // await receipt.wait()
+  // console.log(`NFT balance: ${await nftContract.balanceOf(address)}`)
 
   //終了時間get
   const endTime = Date.now();

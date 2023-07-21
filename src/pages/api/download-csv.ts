@@ -36,13 +36,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   
   //ガス代獲得
   const tx = data.transactionHash;
-  // 反映まで30秒待機
+  // 反映まで40秒待機
   await sleep(40000);
   //時間経過待つ
   const receipt = await alchemy.core.getTransactionReceipt(tx);
-
-
-  const gasUsed = receipt.effectiveGasPrice.toNumber();
+  const gasUsed = receipt.cumulativeGasUsed.toNumber();
   console.log("gasUsed:",gasUsed)
   data.GasFee = gasUsed;
 
