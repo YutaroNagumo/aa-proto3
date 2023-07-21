@@ -6,12 +6,16 @@ const sleep = promisify(setTimeout);
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const UserOpHash: string = req.query.hash as string;
-  await sleep(30000); // 30秒待つ
+  await sleep(40000); // 40秒待つ
   const url: string = `https://www.jiffyscan.xyz/userOpHash/${UserOpHash}?network=mumbai`;
   console.log("jiffy url: " ,url);
 
-  const browser = await puppeteer.launch({ headless: true });
+  const browser = await puppeteer.launch({ 
+    headless: true,
+    args: ['--disable-blink-features=AutomationControlled'],
+  });
   const page = await browser.newPage();
+  await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537');
   await page.goto(url);
   
   // page.gotoの後に以下を追加します
