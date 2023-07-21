@@ -8,19 +8,13 @@ import { polygonMumbai } from "viem/chains";
 
   const SIMPLE_ACCOUNT_FACTORY_ADDRESS =
     "0x9406Cc6185a346906296840746125a0E44976454";
-    const PRIVATE_KEY =  process.env.NEXT_PUBLIC_PRIVATE_KEY;
-
-  //wallet address : 0x859A3Cd6948e7BcC2FCb7A340d084F21ec1D41A0
-  // 1. define the EOA owner of the Smart Account
-  // This is just one exapmle of how to interact with EOAs, feel free to use any other interface
+  const PRIVATE_KEY =  process.env.NEXT_PUBLIC_PRIVATE_KEY;
+  const RPCURL = "https://polygon-mumbai.g.alchemy.com/v2/" + process.env.NEXT_PUBLIC_ALCHEMY_KEY;
+  console.log("RPCURL: ",RPCURL);
   const wallet = new Wallet(PRIVATE_KEY);
-  // All that is important for defining an owner is that it provides a `signMessage` and `getAddress` function
-
-  // 2. initialize the provider and connect it to the account
+  
   const provider = new SmartAccountProvider(
-    // the demo key below is public and rate-limited, it's better to create a new one
-    // you can get started with a free account @ https://www.alchemy.com/
-    "https://polygon-mumbai.g.alchemy.com/v2/wDwT-O3jfU0AjkVuNeEMYjjNqmPWAWTn", // rpcUrl
+    RPCURL, // rpcUrl
     "0x5FF137D4b0FDCD49DcA30c7CF57E578a026d2789", // entryPointAddress
     polygonMumbai // chain
   ).connect(
@@ -54,7 +48,17 @@ async function sendOperationAndGetHash_a() {
       const runtime = Math.abs(endTime - startTime) / 1000;
 
       const { hash } = result;
-      return [runtime,hash]; // hashを返す
+
+      //Tx Hash獲得
+      console.log("UOHash: ",hash);
+      //jiffyscanの調子が悪いので一旦スクレイピング中止
+      const response = await fetch(`/api/scrapeJiffy?hash=${hash}`);
+      const data = await response.json();
+      console.log("data: ",data);
+      const txHash = data.transactionHash;
+      console.log(data.transactionHash);
+
+      return [runtime,hash,data.transactionHash]; // hashを返す
     } catch (error) {
       // エラーハンドリングをする
       console.error(error); // エラー情報をログに出力

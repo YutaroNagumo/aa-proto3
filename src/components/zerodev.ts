@@ -38,14 +38,14 @@ const sendOperationAndGetHash_z = async () => {
   //Tx Hash獲得
   console.log("UOHash: ",receipt.hash);
   //jiffyscanの調子が悪いので一旦スクレイピング中止
-//   const response = await fetch(`/api/scrapeZerodev?hash=${receipt.hash}`);
-//   const data = await response.json();
-//   console.log("data: ",data);
-//   const txHash = data.transactionHash;
-//   console.log(data.transactionHash);
+  const response = await fetch(`/api/scrapeJiffy?hash=${receipt.hash}`);
+  const data = await response.json();
+  console.log("data: ",data);
+  const txHash = data.transactionHash;
+  console.log(data.transactionHash);
 
 //   return [address, contractAddress, startTime, endTime, receipt.hash, txHash];
-    return [runtime, receipt.hash];
+  return [runtime, receipt.hash, data.transactionHash];
 
 }
 export default sendOperationAndGetHash_z;

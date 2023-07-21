@@ -4,7 +4,7 @@ import { scrapeTransactionFee } from './scrapeData';
 
 const { Network, Alchemy } = require("alchemy-sdk");
 const settings = {
-  apiKey: "wDwT-O3jfU0AjkVuNeEMYjjNqmPWAWTn",
+  apiKey: process.env.NEXT_PUBLIC_ALCHEMY_KEY,
   network: Network.MATIC_MUMBAI,
 };
 const alchemy = new Alchemy(settings);

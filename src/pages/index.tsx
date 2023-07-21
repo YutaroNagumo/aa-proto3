@@ -80,13 +80,14 @@ export default function Home() {
     if (res !== null) {
     addEvent(`hash: ${res[1]}`);
     addEvent(`JiffyScan: https://www.jiffyscan.xyz/userOpHash/${res[1]}?network=mumbai`);
-
+    addEvent(`Transaction hash: ${res[2]?? null}`);
+    addEvent(`explorer: https://mumbai.polygonscan.com/tx/${res[2]}`);
     //csvに保存
     const data = {
       tool: selected_tool ?? '',
       RunTime : res[0],
       UserOperationHash: res[1],
-      transactionHash: "",
+      transactionHash: res[2],
       GasFee : "",
     };
 
@@ -116,7 +117,9 @@ export default function Home() {
     const res = await sendOperationAndGetHash_z();
     addEvent(`UserOpHash: ${res[1]}`);
     addEvent(`JiffyScan: https://www.jiffyscan.xyz/userOpHash/${res[1]}?network=mumbai`);
-    // addEvent(`Transaction hash: ${result[5]?? null}`);
+    addEvent(`Transaction hash: ${res[2]?? null}`);
+    addEvent(`explorer: https://mumbai.polygonscan.com/tx/${res[2]}`);
+
     console.log(res);
 
     //csvに保存
@@ -124,7 +127,7 @@ export default function Home() {
       tool: selected_tool ?? '',
       RunTime : res[0],
       UserOperationHash: res[1],
-      transactionHash: "",
+      transactionHash: res[2],
       GasFee : "",
     };
 
