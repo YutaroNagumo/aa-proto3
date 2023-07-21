@@ -33,4 +33,9 @@ npm run dev
 ```
 このコマンドにより、デフォルトでは http://localhost:3000 でアプリケーションが起動します。ブラウザでこのURLにアクセスして、アプリケーションのUIを表示します。
 
->注意： ローカル環境でこのプロジェクトを実行する前に、必要な環境変数を設定する必要があります。これらの値は、具体的な実行環境に基づいて設定する必要があります。これらの環境変数は、.env ファイルを作成するか、他の環境固有の方法を使用して設定できます。
+### 環境変数の補足
+
+>NEXT_PUBLIC_RPC_URL : Stackupが提供するBundler APIのRPC URL
+>NEXT_PUBLIC_PAYMASTER_UR : Stackupが提供するPaymaster APIのRPC URL
+>NEXT_PUBLIC_PRIVATE_KEY : 南雲の開発用walletの秘密鍵
+>NEXT_PUBLIC_ALCHEMY_KEY : 南雲個人アカウントのAlchemy APIの秘密鍵
