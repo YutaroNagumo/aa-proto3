@@ -35,7 +35,7 @@ npm run dev
 
 ### 環境変数の補足
 
->NEXT_PUBLIC_RPC_URL : Stackupが提供するBundler APIのRPC URL
->NEXT_PUBLIC_PAYMASTER_UR : Stackupが提供するPaymaster APIのRPC URL
->NEXT_PUBLIC_PRIVATE_KEY : 南雲の開発用walletの秘密鍵
->NEXT_PUBLIC_ALCHEMY_KEY : 南雲個人アカウントのAlchemy APIの秘密鍵
+NEXT_PUBLIC_RPC_URL : Stackupが提供するBundler APIのRPC URL
+NEXT_PUBLIC_PAYMASTER_UR : Stackupが提供するPaymaster APIのRPC URL
+NEXT_PUBLIC_PRIVATE_KEY : 南雲の開発用walletの秘密鍵
+NEXT_PUBLIC_ALCHEMY_KEY : 南雲個人アカウントのAlchemy APIの秘密鍵
